@@ -1,6 +1,13 @@
 import 'package:flutter/material.dart';
 
 class MainMenu extends StatelessWidget {
+  String login;
+  String password;
+
+  MainMenu(String login, String password) {
+    this.login = login;
+    this.password = password;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -9,7 +16,13 @@ class MainMenu extends StatelessWidget {
         backgroundColor: Colors.teal,
       ),
       body: Container(
-        child: Text("Главное меню"),
+        child: ListView(
+          children: [
+            Text("Главное меню"),
+            Text(login),
+            Text(password),
+          ],
+        ),
       ),
     );
   }

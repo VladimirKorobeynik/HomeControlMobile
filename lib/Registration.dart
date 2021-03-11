@@ -2,6 +2,9 @@ import 'package:Home_Control/MainMenu.dart';
 import 'package:flutter/material.dart';
 
 class Registration extends StatelessWidget {
+  String login;
+  String password;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -165,8 +168,11 @@ class Registration extends StatelessWidget {
                   borderRadius: new BorderRadius.circular(30.0),
                 ),
                 onPressed: () => {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => MainMenu()))
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              MainMenu(this.login, this.password)))
                 },
               ),
             )
