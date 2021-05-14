@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -91,27 +92,33 @@ class Authorization extends StatelessWidget {
                   if (this.login.toString().trim() != "" &&
                       this.password.toString().trim() != "") {
                     //Отправка запроса на данные пользователей
-                    this.fetchData();
+                    // this.fetchData();
 
-                    for (var i = 0; i < data.length; i++) {
-                      if (data[i]["login"].toString() == this.login.trim() &&
-                          data[i]["password"].toString() ==
-                              this.password.trim()) {
-                        Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    MainMenu(this.login, this.password)));
+                    // for (var i = 0; i < data.length; i++) {
+                    //   if (data[i]["login"].toString() == this.login.trim() &&
+                    //       data[i]["password"].toString() ==
+                    //           this.password.trim()) {
+                    //     Navigator.push(
+                    //         context,
+                    //         MaterialPageRoute(
+                    //             builder: (context) =>
+                    //                 MainMenu(this.login, this.password)));
 
-                        this.loginController.clear();
-                        this.passwordController.clear();
-                        break;
-                      }
-                      if (i == data.length - 1) {
-                        _showCupertinoDialog(context, "Ошибка Авторизации",
-                            "Такого пользователя не существует!");
-                      }
-                    }
+                    //     this.loginController.clear();
+                    //     this.passwordController.clear();
+                    //     break;
+                    //   }
+                    //   if (i == data.length - 1) {
+                    //     _showCupertinoDialog(context, "Ошибка Авторизации",
+                    //         "Такого пользователя не существует!");
+                    //   }
+                    // }
+
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                                MainMenu(this.login, this.password)));
                   } else {
                     _showCupertinoDialog(
                         context, "Ошибка", "Заполните пожалуйста все поля :)");
@@ -167,7 +174,8 @@ class Authorization extends StatelessWidget {
 
 //Отправка запроса на получениие данных
   void fetchData() async {
-    final response = await http.get('http://192.168.0.100:8888/fetch_data.php');
+    final response =
+        await http.get('http://192.168.0.100:8888/web/mobileAuthorization.php');
 
     if (response.statusCode == 200) {
       data = json.decode(response.body);
