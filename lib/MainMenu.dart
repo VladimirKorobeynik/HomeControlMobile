@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Home_Control/Profile.dart';
+import 'package:Home_Control/Settings.dart';
 
 class MainMenu extends StatelessWidget {
   String login;
@@ -119,6 +120,26 @@ class MainMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14.0),
                   ),
                   onPressed: () {},
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: RaisedButton(
+                  child: Text(
+                    "Настройки",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Settings()));
+                  },
                 ),
               ),
             ],
