@@ -7,7 +7,7 @@ class HomeControl extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Home Contro',
+      title: 'Home Control',
       theme: ThemeData(
         primarySwatch: Colors.teal,
       ),

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:Home_Control/Profile.dart';
 import 'package:Home_Control/Settings.dart';
+import 'package:Home_Control/Subscription.dart';
+import 'package:Home_Control/Devices.dart';
 
 class MainMenu extends StatelessWidget {
   String login;
@@ -45,7 +47,10 @@ class MainMenu extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14.0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Devices()));
+                  },
                 ),
               ),
               Padding(
@@ -62,7 +67,12 @@ class MainMenu extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(14.0),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Subscription()));
+                  },
                 ),
               ),
               Padding(
