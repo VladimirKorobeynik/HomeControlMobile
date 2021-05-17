@@ -4,6 +4,7 @@ import 'package:Home_Control/Profile.dart';
 import 'package:Home_Control/Settings.dart';
 import 'package:Home_Control/Subscription.dart';
 import 'package:Home_Control/Devices.dart';
+import 'package:Home_Control/Script.dart';
 
 class MainMenu extends StatelessWidget {
   String login;
@@ -37,7 +38,7 @@ class MainMenu extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: RaisedButton(
                   child: Text(
-                    "Устройства",
+                    "Пристрої",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -57,7 +58,7 @@ class MainMenu extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: RaisedButton(
                   child: Text(
-                    "Подписка",
+                    "Підписка",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -79,7 +80,7 @@ class MainMenu extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: RaisedButton(
                   child: Text(
-                    "Профиль",
+                    "Профіль",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -102,7 +103,27 @@ class MainMenu extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: RaisedButton(
                   child: Text(
-                    "Сценарии",
+                    "Сценарії",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  color: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(14.0),
+                  ),
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => Script()));
+                  },
+                ),
+              ),
+              Padding(
+                padding: EdgeInsets.all(5),
+                child: RaisedButton(
+                  child: Text(
+                    "Служба підтримки",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
@@ -119,24 +140,7 @@ class MainMenu extends StatelessWidget {
                 padding: EdgeInsets.all(5),
                 child: RaisedButton(
                   child: Text(
-                    "Служба поддержки",
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  color: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(14.0),
-                  ),
-                  onPressed: () {},
-                ),
-              ),
-              Padding(
-                padding: EdgeInsets.all(5),
-                child: RaisedButton(
-                  child: Text(
-                    "Настройки",
+                    "Налаштування",
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontWeight: FontWeight.bold,

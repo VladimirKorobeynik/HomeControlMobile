@@ -33,7 +33,7 @@ class Authorization extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 30),
               child: Text(
-                "Авторизация",
+                "Авторизація",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -49,7 +49,7 @@ class Authorization extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Ваш логин",
+                  hintText: "Ваш логін",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -75,7 +75,7 @@ class Authorization extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 10),
               child: RaisedButton(
-                child: Text("Вход"),
+                child: Text("Вхід"),
                 color: Colors.redAccent,
                 textColor: Colors.white,
                 padding: EdgeInsets.only(top: 15, bottom: 15),
@@ -119,7 +119,7 @@ class Authorization extends StatelessWidget {
                                 MainMenu(this.login, this.password)));
                   } else {
                     _showCupertinoDialog(
-                        context, "Ошибка", "Заполните пожалуйста все поля :)");
+                        context, "Помилка", "Заповніть будь ласка всі поля :)");
                   }
                 },
               ),
@@ -127,7 +127,7 @@ class Authorization extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: RaisedButton(
-                child: Text("Регистрация"),
+                child: Text("Реєстрація"),
                 color: Colors.redAccent,
                 textColor: Colors.white,
                 padding: EdgeInsets.only(top: 15, bottom: 15),
@@ -161,7 +161,7 @@ class Authorization extends StatelessWidget {
               content: new Text(cont),
               actions: <Widget>[
                 FlatButton(
-                  child: Text('Закрыть'),
+                  child: Text('Закрити'),
                   onPressed: () {
                     Navigator.of(context).pop();
                   },

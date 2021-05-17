@@ -1,5 +1,6 @@
 import 'package:Home_Control/Authorization.dart';
 import 'package:flutter/material.dart';
+import 'package:Home_Control/Theme.dart';
 
 void main() => runApp(HomeControl());
 
@@ -8,9 +9,7 @@ class HomeControl extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Home Control',
-      theme: ThemeData(
-        primarySwatch: Colors.teal,
-      ),
+      theme: baseTheme(),
       home: Authorization(),
     );
   }

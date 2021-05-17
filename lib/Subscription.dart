@@ -8,7 +8,7 @@ class Subscription extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Подписки",
+          "Підписка",
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.teal,
@@ -21,27 +21,46 @@ class Subscription extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                SubscriptionHead(),
+                SubscriptionHead("22.22.2021", "Місячна", true, 17),
               ],
             ),
             Row(
               children: [
-                Column(
-                  children: <Widget>[
-                    SubscriptionBlock("Полугодовая подписка", 1900),
-                    SubscriptionBlock("Годовая подписка", 3800),
-                  ],
-                )
+                Expanded(
+                  child: SubscriptionBlock("Місячна підписка", 12312),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: SubscriptionBlock("Піврічна підписка", 12312),
+                ),
+              ],
+            ),
+            Row(
+              children: [
+                Expanded(
+                  child: SubscriptionBlock("Річна підписка", 12312),
+                ),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
-                RaisedButton(
-                    onPressed: () {},
-                    color: Colors.white,
-                    textColor: Color.fromRGBO(170, 89, 55, 1.0),
-                    child: const Text('Cancel'))
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Text(
+                    'Скасувати підписку',
+                    style: TextStyle(
+                        color: Colors.red, fontWeight: FontWeight.bold),
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor:
+                        MaterialStateProperty.all<Color>(Colors.white),
+                    shadowColor: MaterialStateProperty.all<Color>(Colors.red),
+                  ),
+                ),
               ],
             )
           ],
@@ -63,12 +82,25 @@ class SubscriptionBlock extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.red,
-      child: Row(
-        children: [
-          Text("data"),
-        ],
+    return Block(
+      110,
+      Padding(
+        padding: EdgeInsets.only(top: 10, left: 30, right: 30, bottom: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text(
+              subscriptionName,
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              subscriptionPrice.toString() + "грн",
+              style:
+                  TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -76,17 +108,31 @@ class SubscriptionBlock extends StatelessWidget {
 
 //Subscription Head
 class SubscriptionHead extends StatelessWidget {
+  String limit;
+  String type;
+  bool status;
+  String statusText;
+  int daysLeft;
+
+  SubscriptionHead(String lim, String type, bool status, int daysLeft) {
+    this.limit = lim;
+    this.type = type;
+    this.status = status;
+    this.statusText = (status) ? "Активна" : "Не активна";
+    this.daysLeft = daysLeft;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(bottom: 20),
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Підписка до ",
+                "Підписка до: ${limit}",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
@@ -97,9 +143,10 @@ class SubscriptionHead extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Тип підписки: ",
+                "Тип підписки: ${type}",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
@@ -109,9 +156,10 @@ class SubscriptionHead extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Статус підписки: ",
+                "Статус підписки: ${statusText}",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
@@ -121,9 +169,10 @@ class SubscriptionHead extends StatelessWidget {
             ],
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Днів до завершення: ",
+                "Днів до завершення: ${daysLeft}  днів",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,

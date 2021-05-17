@@ -9,7 +9,7 @@ class Settings extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Настройки",
+          "Налаштування",
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.teal,
@@ -34,10 +34,10 @@ class SettingsContent extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SettingsLine("Тема"),
-          SettingsLine("Оповещения"),
+          SettingsLine("Повідомлення"),
           SettingsLine("Звук"),
-          SettingsLine("Настройка"),
-          SettingsLine("Настройка"),
+          SettingsLine("Налаштування"),
+          SettingsLine("Налаштування"),
         ],
       ),
     );

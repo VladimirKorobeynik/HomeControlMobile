@@ -7,19 +7,39 @@ class AddDevice extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Устройства",
+          "Додавання пристрою",
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.teal,
       ),
       body: Container(
-        padding: EdgeInsets.only(left: 10, right: 10),
+        padding: EdgeInsets.only(left: 10, right: 10, top: 30, bottom: 30),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            AddDeviceInput("Название", "Введите название"),
-            AddDeviceInput("Код устройства", "Введите код устройства"),
-            CodeButton(),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                AddDeviceInput("Назва", "Введіть назву"),
+                AddDeviceInput("Код пристрою", "Введіть код пристрою"),
+                CodeButton(),
+              ],
+            ),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {},
+                  child: Padding(
+                    padding: EdgeInsets.only(left: 60, right: 60),
+                    child: Text(
+                      "Додати",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
+              ],
+            )
           ],
         ),
       ),
@@ -40,7 +60,7 @@ class AddDeviceInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: EdgeInsets.only(top: 40, bottom: 10),
+      padding: EdgeInsets.only(bottom: 10),
       child: Column(
         children: <Widget>[
           Padding(
@@ -79,25 +99,18 @@ class AddDeviceInput extends StatelessWidget {
 class CodeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: 60,
-      height: 60,
-      child: Icon(
-        Icons.qr_code,
-        color: Colors.teal,
-        size: 40,
+    return ElevatedButton(
+      onPressed: () {},
+      child: Padding(
+        padding: EdgeInsets.only(top: 10, bottom: 10),
+        child: Icon(
+          Icons.qr_code,
+          color: Colors.teal,
+          size: 40,
+        ),
       ),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        boxShadow: <BoxShadow>[
-          BoxShadow(
-            color: Colors.grey,
-            offset: Offset.zero,
-            blurRadius: 2.0,
-            spreadRadius: 0.0,
-          )
-        ],
-        borderRadius: BorderRadius.circular(12.0),
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all<Color>(Colors.white),
       ),
     );
   }

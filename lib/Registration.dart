@@ -22,7 +22,7 @@ class Registration extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 30),
               child: Text(
-                "Регистрация",
+                "Реєстрація",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20,
@@ -38,7 +38,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Имя",
+                  hintText: "Ім'я",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -52,7 +52,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Фамилия",
+                  hintText: "Прізвище",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -66,7 +66,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Отчество",
+                  hintText: "По батькові",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -80,7 +80,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Номер телефона",
+                  hintText: "Номер телефону",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -94,7 +94,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Адрес",
+                  hintText: "Адреса",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -108,7 +108,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Почта",
+                  hintText: "Пошта",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -122,7 +122,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Дата рождения",
+                  hintText: "Дата нарождення",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -136,7 +136,7 @@ class Registration extends StatelessWidget {
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.all(Radius.circular(15.0)),
                   ),
-                  hintText: "Логин",
+                  hintText: "Логін",
                   filled: true,
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
@@ -160,7 +160,7 @@ class Registration extends StatelessWidget {
             Padding(
               padding: EdgeInsets.only(bottom: 20),
               child: RaisedButton(
-                child: Text("Зарегестрироваться"),
+                child: Text("Зареєструватися"),
                 color: Colors.redAccent,
                 textColor: Colors.white,
                 padding: EdgeInsets.only(top: 15, bottom: 15),

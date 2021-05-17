@@ -16,7 +16,7 @@ class Profile extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "Профиль",
+          "Профіль",
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.teal,
@@ -80,7 +80,7 @@ class ProfileHead extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "Имя",
+                        "Ім'я",
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 18,
@@ -93,7 +93,7 @@ class ProfileHead extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "Фамилия",
+                        "Прізвище",
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 18,
@@ -105,7 +105,7 @@ class ProfileHead extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "Отчество",
+                        "По батькові",
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 18,
@@ -142,9 +142,9 @@ class ProfileBody extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             LineInfo(pass),
-            LineInfo("Почта"),
-            LineInfo("Номер телефона"),
-            LineInfo("Адрес"),
+            LineInfo("Пошта"),
+            LineInfo("Номер телефону"),
+            LineInfo("Адреса"),
           ],
         ),
       ),
