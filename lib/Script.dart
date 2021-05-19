@@ -1,7 +1,9 @@
+import 'package:Home_Control/Actions/SlidableWidget.dart';
 import 'package:flutter/material.dart';
 import 'package:Home_Control/Parts/Block.dart';
 import 'package:Home_Control/ScriptEdit.dart';
 import 'package:Home_Control/Parts/AddButton.dart';
+import 'package:Home_Control/Actions/SlidableWidget.dart';
 
 //Main widget Script
 class Script extends StatelessWidget {
@@ -15,33 +17,7 @@ class Script extends StatelessWidget {
         ),
         backgroundColor: Colors.teal,
       ),
-      body: Container(
-        child: ListView(
-          padding: EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30),
-          children: [
-            Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Column(
-                  children: [
-                    ScriptBlock("Вечір", "22:00-23:00",
-                        'assets/ScriptsImage/backgroundScript1.jpeg'),
-                    ScriptBlock("Ніч", "22:00-23:00",
-                        'assets/ScriptsImage/backgroundScript2.jpeg'),
-                    // ScriptBlock("Чил", "00:00-00:00", 'assets/ScriptsImage/backgroundScript3.png'),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AddButton(),
-                  ],
-                )
-              ],
-            )
-          ],
-        ),
-      ),
+      body: ListSidableWidget(),
     );
   }
 }
@@ -112,37 +88,50 @@ class ScriptBlock extends StatelessWidget {
   }
 }
 
-// class DismissibleList extends StatefulWidget {
-//   @override
-//   _DismissibleListState createState() => _DismissibleListState();
-// }
+class ListSidableWidget extends StatefulWidget {
+  @override
+  _DismissibleListState createState() => _DismissibleListState();
+}
 
-// class _DismissibleListState extends State<DismissibleList> {
-//   @override
-//   Widget build(BuildContext context) {
-//     var sampleList = {
-//       '1': ScriptBlock(
-//           "Вечір", "22:00-23:00", 'assets/ScriptsImage/backgroundScript1.jpeg'),
-//       '2': ScriptBlock(
-//           "Ніч", "22:00-23:00", 'assets/ScriptsImage/backgroundScript2.jpeg'),
-//     }; // the list of elements
-//     return ListView.builder(
-//       itemCount: sampleList.length, //number of items on the list
-//       itemBuilder: (BuildContext context, int index) {
-//         return Dismissible(
-//           key: Key(sampleList[
-//               index]), //unique key string for each element (in this case each string is unique)
-//           onDismissed: (direction) {},
-//           child: Padding(
-//             padding: EdgeInsets.all(16.0), // just to help the visual
-//             child: Text('${sampleList[index]}'),
-//           ),
-//           background: Container(
-//             color: Colors.red[400],
-//             child: Text("Удалить", style: TextStyle(color: Colors.white)),
-//           ), //what to display form the list
-//         );
-//       },
-//     );
-//   }
-// }
+class _DismissibleListState extends State<ListSidableWidget> {
+  List<ScriptBlock> items = [
+    ScriptBlock(
+        "Вечір", "22:00-23:00", 'assets/ScriptsImage/backgroundScript1.jpeg'),
+    ScriptBlock(
+        "Ніч", "22:00-23:00", 'assets/ScriptsImage/backgroundScript2.jpeg'),
+    ScriptBlock(
+        "Вечір", "22:00-23:00", 'assets/ScriptsImage/backgroundScript1.jpeg'),
+    ScriptBlock(
+        "Вечір", "22:00-23:00", 'assets/ScriptsImage/backgroundScript1.jpeg'),
+    null
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    // the list of elements
+    return ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (BuildContext context, int index) {
+        if (index != items.length - 1) {
+          // print(listLength);
+          final item = items[index];
+          return SlidableWidget(
+            child: item,
+            onDismissed: (action) =>
+                dismissSlidableItem(context, index, action),
+          );
+        }
+        return AddButton();
+      },
+      padding: (EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30)),
+    );
+  }
+
+  void dismissSlidableItem(
+      BuildContext context, int index, SlidableActions actions) {
+    setState(() {
+      items.removeAt(index);
+      print(items.length);
+    });
+  }
+}
