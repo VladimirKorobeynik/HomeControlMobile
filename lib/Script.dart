@@ -94,7 +94,7 @@ class ListSidableWidget extends StatefulWidget {
 }
 
 class _DismissibleListState extends State<ListSidableWidget> {
-  List<ScriptBlock> items = [
+  List<Widget> items = [
     ScriptBlock(
         "Вечір", "22:00-23:00", 'assets/ScriptsImage/backgroundScript1.jpeg'),
     ScriptBlock(

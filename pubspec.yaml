@@ -56,9 +56,13 @@ flutter:
   assets:
     - assets/images/LogoIcon.png
     - assets/images/LogoProfile.png
-    - assets/
-    - assets/icons/
-    - assets/ScriptsImage/
+    - assets/images/LightBuble.png
+    - assets/images/rosette.png
+    - assets/images/thermometer.png
+    - assets/images/lock.png
+    # - assets/
+    # - assets/icons/
+    # - assets/ScriptsImage/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
