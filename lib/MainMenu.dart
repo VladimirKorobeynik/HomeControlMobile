@@ -5,14 +5,13 @@ import 'package:Home_Control/Settings.dart';
 import 'package:Home_Control/Subscription.dart';
 import 'package:Home_Control/Devices.dart';
 import 'package:Home_Control/Script.dart';
+import 'package:Home_Control/Entity/User.dart';
 
 class MainMenu extends StatelessWidget {
-  String login;
-  String password;
+  User userAccount;
 
-  MainMenu(String login, String password) {
-    this.login = login;
-    this.password = password;
+  MainMenu(User userAccount) {
+    this.userAccount = userAccount;
   }
   @override
   Widget build(BuildContext context) {
@@ -36,6 +35,7 @@ class MainMenu extends StatelessWidget {
             children: <Widget>[
               Padding(
                 padding: EdgeInsets.all(5),
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   child: Text(
                     "Пристрої",
@@ -56,6 +56,7 @@ class MainMenu extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(5),
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   child: Text(
                     "Підписка",
@@ -78,6 +79,7 @@ class MainMenu extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(5),
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   child: Text(
                     "Профіль",
@@ -94,13 +96,13 @@ class MainMenu extends StatelessWidget {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) =>
-                                Profile(this.login, this.password)));
+                            builder: (context) => Profile(userAccount)));
                   },
                 ),
               ),
               Padding(
                 padding: EdgeInsets.all(5),
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   child: Text(
                     "Сценарії",
@@ -121,6 +123,7 @@ class MainMenu extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(5),
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   child: Text(
                     "Служба підтримки",
@@ -138,6 +141,7 @@ class MainMenu extends StatelessWidget {
               ),
               Padding(
                 padding: EdgeInsets.all(5),
+                // ignore: deprecated_member_use
                 child: RaisedButton(
                   child: Text(
                     "Налаштування",

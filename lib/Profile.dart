@@ -1,45 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:Home_Control/Parts/Block.dart';
+import 'package:Home_Control/Entity/User.dart';
 
 //Main widget Profile
 class Profile extends StatelessWidget {
-  String login;
-  String password;
+  User userAccount;
 
-  Profile(String login, String password) {
-    this.login = login;
-    this.password = password;
+  Profile(User userAccount) {
+    this.userAccount = userAccount;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Профіль",
-          textAlign: TextAlign.center,
+        appBar: AppBar(
+          title: Text(
+            "Профіль",
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.teal,
         ),
-        backgroundColor: Colors.teal,
-      ),
-      body: Container(
-        padding: EdgeInsets.only(top: 30, left: 15, right: 15),
-        child: Column(
-          children: <Widget>[
-            ProfileHead(login),
-            ProfileBody(password),
+        body: ListView(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 30, left: 15, right: 15),
+              child: Column(
+                children: <Widget>[
+                  ProfileHead(userAccount),
+                  ProfileBody(userAccount),
+                ],
+              ),
+            ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
 
 //Widget ProfileHead
 class ProfileHead extends StatelessWidget {
-  String login;
+  User userAccount;
 
-  ProfileHead(String login) {
-    this.login = login;
+  ProfileHead(User userAccount) {
+    this.userAccount = userAccount;
   }
 
   @override
@@ -61,7 +63,7 @@ class ProfileHead extends StatelessWidget {
                   Padding(
                     padding: EdgeInsets.only(top: 5),
                     child: Text(
-                      login,
+                      userAccount.login,
                       style: TextStyle(
                         color: Colors.grey[600],
                         fontSize: 18,
@@ -80,7 +82,19 @@ class ProfileHead extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "Ім'я",
+                        userAccount.fullname,
+                        style: TextStyle(
+                          color: Colors.grey[600],
+                          fontSize: 18,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Text(
+                        userAccount.name,
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 18,
@@ -93,19 +107,7 @@ class ProfileHead extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                        "Прізвище",
-                        style: TextStyle(
-                          color: Colors.grey[600],
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Text(
-                        "По батькові",
+                        userAccount.patronymic,
                         style: TextStyle(
                           color: Colors.grey[600],
                           fontSize: 18,
@@ -126,10 +128,10 @@ class ProfileHead extends StatelessWidget {
 
 //Widget ProfileBody
 class ProfileBody extends StatelessWidget {
-  String pass;
+  User userAccount;
 
-  ProfileBody(String pass) {
-    this.pass = pass;
+  ProfileBody(User userAccount) {
+    this.userAccount = userAccount;
   }
 
   @override
@@ -141,10 +143,11 @@ class ProfileBody extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            LineInfo(pass),
-            LineInfo("Пошта"),
-            LineInfo("Номер телефону"),
-            LineInfo("Адреса"),
+            LineInfo(
+                (userAccount.isActiveSubscription) ? "Активна" : "Не активна"),
+            LineInfo(userAccount.email),
+            LineInfo(userAccount.number),
+            LineInfo(userAccount.address),
           ],
         ),
       ),

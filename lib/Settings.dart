@@ -7,20 +7,23 @@ class Settings extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Налаштування",
-          textAlign: TextAlign.center,
+        appBar: AppBar(
+          title: Text(
+            "Налаштування",
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.teal,
         ),
-        backgroundColor: Colors.teal,
-      ),
-      body: Container(
-        padding: EdgeInsets.only(top: 40, bottom: 40),
-        child: Column(
-          children: <Widget>[SettingsContent()],
-        ),
-      ),
-    );
+        body: ListView(
+          children: [
+            Container(
+              padding: EdgeInsets.only(top: 40, bottom: 40),
+              child: Column(
+                children: <Widget>[SettingsContent()],
+              ),
+            ),
+          ],
+        ));
   }
 }
 
@@ -47,7 +50,6 @@ class SettingsContent extends StatelessWidget {
 //Main Settings Line widget
 class SettingsLine extends StatelessWidget {
   String settingName;
-  var _lights = false;
 
   SettingsLine(String settingName) {
     this.settingName = settingName;

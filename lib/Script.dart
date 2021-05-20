@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:Home_Control/Parts/Block.dart';
 import 'package:Home_Control/ScriptEdit.dart';
 import 'package:Home_Control/Parts/AddButton.dart';
-import 'package:Home_Control/Actions/SlidableWidget.dart';
 
 //Main widget Script
 class Script extends StatelessWidget {
@@ -63,7 +62,7 @@ class ScriptBlock extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "${name}",
+                      name,
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     )
@@ -73,7 +72,7 @@ class ScriptBlock extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
                     Text(
-                      "${timeInterval}",
+                      timeInterval,
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.bold),
                     )

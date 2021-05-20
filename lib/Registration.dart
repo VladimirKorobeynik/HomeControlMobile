@@ -1,9 +1,11 @@
+import 'package:Home_Control/Entity/User.dart';
 import 'package:Home_Control/MainMenu.dart';
 import 'package:flutter/material.dart';
 
 class Registration extends StatelessWidget {
   String login;
   String password;
+  User userAccount;
 
   @override
   Widget build(BuildContext context) {
@@ -159,6 +161,7 @@ class Registration extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.only(bottom: 20),
+              // ignore: deprecated_member_use
               child: RaisedButton(
                 child: Text("Зареєструватися"),
                 color: Colors.redAccent,
@@ -168,11 +171,27 @@ class Registration extends StatelessWidget {
                   borderRadius: new BorderRadius.circular(30.0),
                 ),
                 onPressed: () => {
+                  userAccount = new User(
+                      1,
+                      1,
+                      1,
+                      "fullname",
+                      'name',
+                      "patronymic",
+                      "number",
+                      "address",
+                      "email",
+                      "birthday",
+                      "login",
+                      "registrationDate",
+                      true,
+                      true),
                   Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              MainMenu(this.login, this.password)))
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => MainMenu(userAccount),
+                    ),
+                  ),
                 },
               ),
             )

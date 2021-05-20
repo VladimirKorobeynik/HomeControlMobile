@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:Home_Control/Parts/Block.dart';
 
 //Main widget Script
 class ScriptEdit extends StatelessWidget {
@@ -14,7 +13,7 @@ class ScriptEdit extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "${editNameScript}",
+          editNameScript,
           textAlign: TextAlign.center,
         ),
         backgroundColor: Colors.teal,

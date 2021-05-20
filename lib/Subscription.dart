@@ -6,67 +6,71 @@ class Subscription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "Підписка",
-          textAlign: TextAlign.center,
+        appBar: AppBar(
+          title: Text(
+            "Підписка",
+            textAlign: TextAlign.center,
+          ),
+          backgroundColor: Colors.teal,
         ),
-        backgroundColor: Colors.teal,
-      ),
-      body: Container(
-        width: double.infinity,
-        padding: EdgeInsets.only(top: 30, left: 15, right: 15),
-        child: Column(
+        body: ListView(
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                SubscriptionHead("22.22.2021", "Місячна", true, 17),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: SubscriptionBlock("Місячна підписка", 12312),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: SubscriptionBlock("Піврічна підписка", 12312),
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: SubscriptionBlock("Річна підписка", 12312),
-                ),
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                ElevatedButton(
-                  onPressed: () {},
-                  child: Text(
-                    'Скасувати підписку',
-                    style: TextStyle(
-                        color: Colors.red, fontWeight: FontWeight.bold),
+            Container(
+              width: double.infinity,
+              padding: EdgeInsets.only(top: 30, left: 15, right: 15),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      SubscriptionHead("22.22.2021", "Місячна", true, 17),
+                    ],
                   ),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color>(Colors.white),
-                    shadowColor: MaterialStateProperty.all<Color>(Colors.red),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SubscriptionBlock("Місячна підписка", 12312),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            )
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SubscriptionBlock("Піврічна підписка", 12312),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: SubscriptionBlock("Річна підписка", 12312),
+                      ),
+                    ],
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      ElevatedButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Скасувати підписку',
+                          style: TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                        ),
+                        style: ButtonStyle(
+                          backgroundColor:
+                              MaterialStateProperty.all<Color>(Colors.white),
+                          shadowColor:
+                              MaterialStateProperty.all<Color>(Colors.red),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+            ),
           ],
-        ),
-      ),
-    );
+        ));
   }
 }
 
@@ -132,7 +136,7 @@ class SubscriptionHead extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Підписка до: ${limit}",
+                "Підписка до: $limit",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
@@ -146,7 +150,7 @@ class SubscriptionHead extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Тип підписки: ${type}",
+                "Тип підписки: $type",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
@@ -159,7 +163,7 @@ class SubscriptionHead extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Статус підписки: ${statusText}",
+                "Статус підписки: $statusText",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
@@ -172,7 +176,7 @@ class SubscriptionHead extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               Text(
-                "Днів до завершення: ${daysLeft}  днів",
+                "Днів до завершення: $daysLeft  днів",
                 style: TextStyle(
                   color: Colors.grey[600],
                   fontSize: 16,
