@@ -1,5 +1,7 @@
 import 'dart:convert';
 import 'package:Home_Control/Entity/User.dart';
+import 'package:Home_Control/Parts/DialogBox.dart';
+import 'package:Home_Control/Services/Connect.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter/material.dart';
@@ -91,6 +93,7 @@ class AuthorizationState extends State<Authorization> {
                   borderRadius: new BorderRadius.circular(30.0),
                 ),
                 onPressed: () async {
+                  DialogBox dialogBox = new DialogBox();
                   this.getDataAuthorization(
                       login: this.loginController.text,
                       password: this.passwordController.text);
@@ -101,13 +104,13 @@ class AuthorizationState extends State<Authorization> {
                       'login': login.trim(),
                       'password': password.trim(),
                     };
+                    Connect connect = new Connect();
 
-                    userData = await startMethod(
+                    userData = await connect.startMethod(
                         'http://192.168.0.101/mobileWeb/mobileAuthorization.php',
                         data);
 
                     if (userData != null) {
-                      print(userData);
                       User userAccount = new User(
                         int.parse(userData["user_id"]),
                         int.parse(userData["role_id"]),
@@ -136,11 +139,13 @@ class AuthorizationState extends State<Authorization> {
                       this.loginController.clear();
                       this.passwordController.clear();
                     } else {
-                      _showCupertinoDialog(context, "Ошибка Авторизации",
+                      dialogBox.showCupertinoDialog(
+                          context,
+                          "Ошибка Авторизации",
                           "Такого пользователя не существует!");
                     }
                   } else {
-                    _showCupertinoDialog(
+                    dialogBox.showCupertinoDialog(
                         context, "Помилка", "Заповніть будь ласка всі поля :)");
                   }
                 },
@@ -175,25 +180,6 @@ class AuthorizationState extends State<Authorization> {
     this.password = password;
   }
 
-//Диалоговое окно ошибки
-  _showCupertinoDialog(context, String titl, String cont) {
-    showDialog(
-      context: context,
-      builder: (_) => new CupertinoAlertDialog(
-        title: new Text(titl),
-        content: new Text(cont),
-        actions: <Widget>[
-          TextButton(
-            child: Text('Закрити'),
-            onPressed: () {
-              Navigator.of(context).pop();
-            },
-          )
-        ],
-      ),
-    );
-  }
-
 //Отправка запроса на получениие данных
   void fetchData() async {
     final response = await http
@@ -202,27 +188,5 @@ class AuthorizationState extends State<Authorization> {
     if (response.statusCode == 200) {
       data = jsonDecode(response.body);
     }
-  }
-
-  Future<Map> sendData(url, data) async {
-    try {
-      var response = await http.post(
-        url,
-        body: jsonEncode(data),
-        headers: {"content-type": "application/json"},
-      );
-      print("Status: ${response.statusCode}");
-      print(response.body);
-      if (response.body != null) {
-        userData = json.decode(response.body);
-      }
-      return userData;
-    } catch (error) {
-      print(error);
-    }
-  }
-
-  Future<Map> startMethod(url, data) async {
-    return await this.sendData(url, data);
   }
 }
