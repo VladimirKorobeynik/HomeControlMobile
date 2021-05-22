@@ -49,8 +49,10 @@ class MainMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14.0),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Devices()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Devices(userAccount.userID)));
                   },
                 ),
               ),
@@ -116,8 +118,10 @@ class MainMenu extends StatelessWidget {
                     borderRadius: BorderRadius.circular(14.0),
                   ),
                   onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => Script()));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => Script(userAccount.userID)));
                   },
                 ),
               ),

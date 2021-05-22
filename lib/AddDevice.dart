@@ -1,7 +1,22 @@
+import 'package:Home_Control/Services/Connect.dart';
+import 'package:Home_Control/Devices.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 
 class AddDevice extends StatelessWidget {
+  String deviceName;
+  String activationKey;
+  int userID;
+
+  AddDevice(int userID) {
+    this.userID = userID;
+  }
+
+  final TextEditingController deviceNameController =
+      new TextEditingController();
+  final TextEditingController activationKeyController =
+      new TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,8 +35,9 @@ class AddDevice extends StatelessWidget {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                AddDeviceInput("Назва", "Введіть назву"),
-                AddDeviceInput("Код пристрою", "Введіть код пристрою"),
+                AddDeviceInput("Назва", "Введіть назву", deviceNameController),
+                AddDeviceInput("Код пристрою", "Введіть код пристрою",
+                    activationKeyController),
                 CodeButton(),
               ],
             ),
@@ -29,7 +45,6 @@ class AddDevice extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ElevatedButton(
-                  onPressed: () {},
                   child: Padding(
                     padding: EdgeInsets.only(left: 60, right: 60),
                     child: Text(
@@ -37,6 +52,30 @@ class AddDevice extends StatelessWidget {
                       style: TextStyle(color: Colors.white),
                     ),
                   ),
+                  onPressed: () {
+                    this.getDataDevice(
+                        name: this.deviceNameController.text,
+                        key: this.activationKeyController.text);
+
+                    if (this.deviceName.toString().trim() != "" &&
+                        this.activationKey.toString().trim() != "") {
+                      print(deviceName);
+                      print(activationKey);
+                      Connect connect = new Connect();
+                      var deviceData = {
+                        "addOperation": true,
+                        "userID": this.userID,
+                        "name": this.deviceName,
+                        "deviceKey": this.activationKey,
+                      };
+
+                      connect.startMethod(
+                          "http://192.168.0.101/mobileWeb/UserDevices.php",
+                          deviceData);
+
+                      Navigator.pop(context, true);
+                    }
+                  },
                 ),
               ],
             )
@@ -45,18 +84,26 @@ class AddDevice extends StatelessWidget {
       ),
     );
   }
+
+  void getDataDevice({String name, String key}) {
+    this.deviceName = name;
+    this.activationKey = key;
+  }
 }
 
 class AddDeviceInput extends StatelessWidget {
   String name;
   String inputName;
 
-  AddDeviceInput(String name, String inputName) {
+  TextEditingController controller;
+
+  AddDeviceInput(
+      String name, String inputName, TextEditingController controller) {
     this.name = name;
     this.inputName = inputName;
+    this.controller = controller;
   }
 
-  final TextEditingController loginController = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -86,7 +133,7 @@ class AddDeviceInput extends StatelessWidget {
                   fillColor: Colors.white,
                   contentPadding: EdgeInsets.fromLTRB(10, 0, 10, 0),
                 ),
-                controller: loginController,
+                controller: controller,
               )
             ],
           )

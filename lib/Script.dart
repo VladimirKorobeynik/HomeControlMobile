@@ -6,6 +6,10 @@ import 'package:Home_Control/Parts/AddButton.dart';
 
 //Main widget Script
 class Script extends StatelessWidget {
+  int userID;
+  Script(int userID) {
+    this.userID = userID;
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +20,7 @@ class Script extends StatelessWidget {
         ),
         backgroundColor: Colors.teal,
       ),
-      body: ListSidableWidget(),
+      body: ListSidableWidget(userID),
     );
   }
 }
@@ -88,11 +92,21 @@ class ScriptBlock extends StatelessWidget {
 }
 
 class ListSidableWidget extends StatefulWidget {
+  int userID;
+  ListSidableWidget(int userID) {
+    this.userID = userID;
+  }
   @override
-  _DismissibleListState createState() => _DismissibleListState();
+  _DismissibleListState createState() => _DismissibleListState(userID);
 }
 
 class _DismissibleListState extends State<ListSidableWidget> {
+  int userID;
+
+  _DismissibleListState(int userID) {
+    this.userID = userID;
+  }
+
   List<Widget> items = [
     ScriptBlock(
         "Вечір", "22:00-23:00", 'assets/ScriptsImage/backgroundScript1.jpeg'),
@@ -120,7 +134,7 @@ class _DismissibleListState extends State<ListSidableWidget> {
                 dismissSlidableItem(context, index, action),
           );
         }
-        return AddButton();
+        return AddButton(this.userID, 'AddScript');
       },
       padding: (EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30)),
     );
