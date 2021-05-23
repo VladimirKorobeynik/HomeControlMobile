@@ -339,46 +339,84 @@ class _DismissibleListState extends State<ListSidableWidget> {
                   },
                 );
               }
-              return GestureDetector(
-                onTap: () async {
-                  await Navigator.of(context)
-                      .push(new MaterialPageRoute(
-                          builder: (context) => AddDevice(this.userID)))
-                      .then((value) => (value)
-                          ? setState(() {
-                              this.reload = !reload;
-                            })
-                          : null);
-                  print(this.reload);
-                },
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  child: Icon(
-                    Icons.add_rounded,
-                    color: Colors.teal,
-                    size: 40,
-                  ),
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: Colors.white,
-                    boxShadow: <BoxShadow>[
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset.zero,
-                        blurRadius: 4.0,
-                        spreadRadius: 0.0,
-                      )
-                    ],
-                  ),
-                ),
-              );
+              if (snapshot.data.length == 1) {
+                return Column(
+                  children: [
+                    Container(
+                      height: 80,
+                      margin: EdgeInsets.only(bottom: 20),
+                      decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2.0,
+                          style: BorderStyle.solid,
+                          color: Color.fromRGBO(217, 218, 162, 1.0),
+                        ),
+                        color: Color.fromRGBO(254, 255, 214, 1.0),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                top: 10, right: 20, left: 20, bottom: 10),
+                            child: Text(
+                              "У вас пока что нет устройств",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    getAddBtn(),
+                  ],
+                );
+              }
+              return getAddBtn();
             },
             padding:
                 (EdgeInsets.only(top: 30, left: 15, right: 15, bottom: 30)),
           );
         }
       },
+    );
+  }
+
+  //Get Add Btn
+  Widget getAddBtn() {
+    return GestureDetector(
+      onTap: () async {
+        await Navigator.of(context)
+            .push(new MaterialPageRoute(
+                builder: (context) => AddDevice(this.userID)))
+            .then((value) => (value)
+                ? setState(() {
+                    this.reload = !reload;
+                  })
+                : null);
+      },
+      child: Container(
+        width: 60,
+        height: 60,
+        child: Icon(
+          Icons.add_rounded,
+          color: Colors.teal,
+          size: 40,
+        ),
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: Colors.white,
+          boxShadow: <BoxShadow>[
+            BoxShadow(
+              color: Colors.grey,
+              offset: Offset.zero,
+              blurRadius: 4.0,
+              spreadRadius: 0.0,
+            )
+          ],
+        ),
+      ),
     );
   }
 
@@ -435,8 +473,6 @@ class _DismissibleListState extends State<ListSidableWidget> {
         body: jsonEncode(data),
         headers: {"content-type": "application/json"},
       );
-      // print("Status: ${response.statusCode}");
-      // print(response.body);
       List<dynamic> userData;
       if (response.body != null) {
         userData = json.decode(response.body);
